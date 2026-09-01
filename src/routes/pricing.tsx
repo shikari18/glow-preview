@@ -29,25 +29,25 @@ const plans = [
   {
     id: "weekly" as const,
     name: "Weekly",
-    sub: "$5.99 billed weekly",
-    price: "$5.99",
+    sub: "$2.00 billed weekly",
+    price: "$2.00",
     per: "/wk",
   },
   {
     id: "monthly" as const,
     name: "Monthly",
-    sub: "$12.00 billed monthly",
-    price: "$12.00",
+    sub: "$5.99 billed monthly",
+    price: "$5.99",
     per: "/mo",
     badge: "MOST POPULAR",
   },
   {
     id: "season" as const,
     name: "Exam Season",
-    sub: "$30.00 every 3 months",
-    price: "$30.00",
+    sub: "$34.99 every 3 months",
+    price: "$34.99",
     per: "/3mo",
-    badge: "BEST VALUE — SAVE 17%",
+    badge: "EXAM SEASON",
   },
 ];
 

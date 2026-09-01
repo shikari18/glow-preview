@@ -3,11 +3,12 @@ import type { ReactNode } from "react";
 
 import logoMark from "@/assets/logo-mark.png";
 import roomDoodle from "@/assets/room-doodle.png";
+import googleLogo from "@/assets/brands/google.svg";
 
 export function AuthLayout({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="grid min-h-screen bg-background lg:grid-cols-2">
-      <div className="flex flex-col px-6 py-8 sm:px-12">
+    <div className="grid h-dvh overflow-hidden bg-background lg:grid-cols-2">
+      <div className="relative flex min-h-0 flex-col px-6 py-5 sm:px-12 sm:py-6">
         <Link to="/" className="flex items-center gap-2.5">
           <img
             src={logoMark}
@@ -19,7 +20,7 @@ export function AuthLayout({ title, children }: { title: string; children: React
           <span className="text-[22px] font-bold tracking-tight">ExamGlow</span>
         </Link>
 
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-12">
+        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-4">
           <h1 className="text-center text-[clamp(2rem,4vw,3rem)] leading-[1.1] whitespace-pre-line">
             {title}
           </h1>
@@ -29,7 +30,7 @@ export function AuthLayout({ title, children }: { title: string; children: React
               type="button"
               className="rounded-full bg-secondary py-3.5 text-[15px] font-medium transition-colors hover:bg-muted"
             >
-              Google
+              <span className="flex items-center justify-center gap-2"><img src={googleLogo} alt="" className="size-4" />Google</span>
             </button>
             <button
               type="button"
@@ -52,7 +53,7 @@ export function AuthLayout({ title, children }: { title: string; children: React
         </div>
       </div>
 
-      <div className="hidden flex-col items-center justify-center bg-surface px-12 py-16 text-center lg:flex">
+      <div className="hidden min-h-0 flex-col items-center justify-center overflow-hidden bg-surface px-12 py-8 text-center lg:flex">
         <p className="text-[clamp(1.25rem,2vw,1.75rem)] leading-snug">
           <span className="bg-highlight px-1.5 display-italic">92% of students</span> get higher
           grades with ExamGlow!
@@ -63,14 +64,14 @@ export function AuthLayout({ title, children }: { title: string; children: React
           loading="lazy"
           width={1400}
           height={900}
-          className="mt-10 w-full max-w-xl"
+          className="mt-6 max-h-[42vh] w-full max-w-xl object-contain"
         />
-        <h2 className="mt-10 text-[clamp(1.5rem,2.4vw,2.25rem)] leading-snug">
+        <h2 className="mt-5 text-[clamp(1.5rem,2.4vw,2.25rem)] leading-snug">
           Drop your class materials,
           <br />
           we'll make your study plan.
         </h2>
-        <p className="mt-10 text-sm text-muted-foreground">
+        <p className="mt-5 text-sm text-muted-foreground">
           Trusted by students from top institutions
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-8 font-display text-xl text-foreground/70">

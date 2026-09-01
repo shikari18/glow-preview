@@ -1,12 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import {
   GraduationCap,
-  BookMarked,
-  Backpack,
-  Stethoscope,
-  BriefcaseMedical,
+  BookOpenCheck,
+  School,
   BadgeCheck,
-  ClipboardList,
   MoreHorizontal,
 } from "lucide-react";
 
@@ -29,21 +26,10 @@ export const Route = createFileRoute("/onboarding/goal")({
 });
 
 const goals = [
-  { label: "College", hint: "Intro courses, major requirements, finals, etc.", Icon: GraduationCap },
-  { label: "Grad School", hint: "Masters, PhD, dissertations", Icon: BookMarked },
-  { label: "High School", hint: "AP, IB, Honors, or regular classes", Icon: Backpack },
-  { label: "Med School", hint: "Pre-clinical, Step 1, Step 2, rotations", Icon: Stethoscope },
-  {
-    label: "Nursing School",
-    hint: "Nursing programs, clinicals, licensure exams, etc.",
-    Icon: BriefcaseMedical,
-  },
-  {
-    label: "Professional Certification",
-    hint: "NCLEX, Bar Exam, CPA, PMP, AWS certs, etc.",
-    Icon: BadgeCheck,
-  },
-  { label: "Standardized Tests", hint: "SAT, ACT, MCAT, GRE, GMAT, LSAT, etc.", Icon: ClipboardList },
+  { label: "College", hint: "Courses, assignments and semester exams", Icon: GraduationCap },
+  { label: "IGCSE", hint: "Cambridge and Edexcel subjects", Icon: School },
+  { label: "A Levels", hint: "AS and A Level exam preparation", Icon: BookOpenCheck },
+  { label: "Professional Exams", hint: "Licensing, certification and entrance exams", Icon: BadgeCheck },
   { label: "Other", hint: "", Icon: MoreHorizontal },
 ];
 

@@ -15,7 +15,7 @@ export function OnboardingShell({
   const router = useRouter();
 
   return (
-    <div className="dark min-h-screen bg-background px-5 py-6 text-foreground">
+    <div className="dark h-dvh overflow-hidden bg-background px-5 py-4 text-foreground">
       <div className="flex items-center justify-between">
         <button
           type="button"
@@ -47,9 +47,9 @@ export function OnboardingShell({
         )}
       </div>
 
-      <div className="mx-auto w-full max-w-3xl py-8 sm:py-10">
+      <div className="mx-auto w-full max-w-3xl py-4 sm:py-5">
         <h1 className="text-center text-[clamp(2rem,5vw,3.25rem)] leading-tight">{title}</h1>
-        <div className="mt-6">{children}</div>
+        <div className="mt-4">{children}</div>
       </div>
     </div>
   );
