@@ -48,7 +48,7 @@ function SourceStep() {
 
   return (
     <OnboardingShell title="How did you hear about ExamGlow?" step={3}>
-      <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-3xl gap-3 sm:grid-cols-2">
         {sources.map(({ label, logo, Icon }, i) => (
           <button
             key={label}
@@ -57,11 +57,11 @@ function SourceStep() {
               saveProfile({ source: label });
               navigate({ to: "/pricing" });
             }}
-            className={`flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-4 text-left transition-colors hover:bg-secondary ${
+            className={`flex items-center gap-4 rounded-2xl border border-border bg-card px-5 py-3 text-left transition-colors hover:bg-secondary ${
               i === sources.length - 1 ? "sm:col-span-2 sm:mx-auto sm:w-1/2" : ""
             }`}
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-black/5">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-card shadow-sm ring-1 ring-border">
               {logo ? (
                 <img src={logo} alt={`${label} logo`} width={20} height={20} className="size-5" />
               ) : (
