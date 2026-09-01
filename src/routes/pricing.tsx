@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
 
 import balanceDoodle from "@/assets/balance-doodle.png";
@@ -20,6 +20,8 @@ export const Route = createFileRoute("/pricing")({
         property: "og:description",
         content: "92% of ExamGlow subscribers improved their grades.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PricingPage,
@@ -42,18 +44,26 @@ const plans = [
     badge: "MOST POPULAR",
   },
   {
-    id: "season" as const,
-    name: "Exam Season",
-    sub: "$34.99 every 3 months",
-    price: "$34.99",
+    id: "termly" as const,
+    name: "Termly",
+    sub: "$14.99 every 3 months",
+    price: "$14.99",
     per: "/3mo",
-    badge: "EXAM SEASON",
+    badge: "TERMLY",
+  },
+  {
+    id: "exam-pass" as const,
+    name: "Exam Pass",
+    sub: "Valid until the end of the next exam season",
+    price: "$34.99",
+    per: "",
+    badge: "EXAM PASS",
   },
 ];
 
 function PricingPage() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState<"weekly" | "monthly" | "season">("monthly");
+  const [selected, setSelected] = useState<"weekly" | "monthly" | "termly" | "exam-pass">("monthly");
   const [processing, setProcessing] = useState(false);
 
   function unlock() {
@@ -63,14 +73,14 @@ function PricingPage() {
   }
 
   return (
-    <div className="dark min-h-screen bg-background px-5 py-6 text-foreground">
+    <div className="dark min-h-dvh bg-background px-4 py-5 text-foreground sm:px-6 lg:px-8">
       <div className="flex items-center justify-between">
         <button
           type="button"
           onClick={() => navigate({ to: "/onboarding/source" })}
-          className="flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:bg-secondary"
+          className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm transition-colors hover:bg-secondary"
         >
-          <span aria-hidden>←</span> Back
+          <ArrowLeft className="size-4" aria-hidden /> Back
         </button>
         <button
           type="button"
@@ -78,23 +88,23 @@ function PricingPage() {
             saveProfile({ plan: "free" });
             navigate({ to: "/home" });
           }}
-          className="flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:bg-secondary"
+          className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm transition-colors hover:bg-secondary"
         >
-          Skip <span aria-hidden>→</span>
+          Skip <ArrowRight className="size-4" aria-hidden />
         </button>
       </div>
 
-      <div className="mx-auto grid max-w-6xl items-start gap-10 py-8 lg:grid-cols-2">
-        <div>
+      <div className="mx-auto grid max-w-6xl items-center gap-10 py-8 lg:min-h-[calc(100dvh-94px)] lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:py-4">
+        <div className="flex flex-col justify-center">
           <img
             src={balanceDoodle}
             alt="Line drawing of a student and a cat balancing on a seesaw"
             loading="lazy"
             width={900}
             height={760}
-            className="mx-auto w-full max-w-sm invert"
+            className="mx-auto w-full max-w-[280px] invert sm:max-w-xs lg:max-w-[310px]"
           />
-          <figure className="mt-5 rounded-2xl bg-card p-6">
+          <figure className="mx-auto mt-6 w-full max-w-lg rounded-2xl border border-border bg-card p-5 sm:p-6">
             <blockquote className="text-[15px] leading-relaxed">
               “I knew ExamGlow was fantastic for me when I could remember information without having
               to put a pen on paper at all.”
@@ -116,15 +126,15 @@ function PricingPage() {
           </figure>
         </div>
 
-        <div className="lg:-mt-4">
-          <h1 className="text-[clamp(1.75rem,3.5vw,2.75rem)] leading-tight">
+        <div className="mx-auto w-full max-w-xl">
+          <h1 className="text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
             92% of ExamGlow subscribers improved their grades
           </h1>
           <p className="mt-2 text-muted-foreground">
             Join <strong className="text-foreground">8M+</strong> students already using ExamGlow
           </p>
 
-          <div className="mt-5 space-y-3">
+          <div className="mt-5 space-y-2.5">
             {plans.map((plan) => {
               const active = selected === plan.id;
               return (
@@ -138,17 +148,17 @@ function PricingPage() {
                   }`}
                 >
                   {plan.badge && (
-                    <span className="block bg-ink-foreground py-2 text-center text-xs font-semibold tracking-wide text-ink">
+                    <span className="block bg-ink-foreground py-1 text-center text-[11px] font-semibold text-ink">
                       {plan.badge}
                     </span>
                   )}
-                  <span className="flex items-center justify-between px-6 py-5">
-                    <span>
+                  <span className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3.5 sm:px-6">
+                    <span className="min-w-0">
                       <span className="block font-semibold">{plan.name}</span>
                       <span className="block text-sm text-muted-foreground">{plan.sub}</span>
                     </span>
-                    <span className="flex items-center gap-4">
-                      <span className="font-display text-3xl">
+                    <span className="flex shrink-0 items-center gap-3">
+                      <span className="font-display text-2xl sm:text-3xl">
                         {plan.price}
                         <span className="text-base text-muted-foreground">{plan.per}</span>
                       </span>
@@ -170,7 +180,7 @@ function PricingPage() {
             type="button"
             onClick={unlock}
             disabled={processing}
-            className="mt-6 w-full rounded-full bg-ink-foreground py-4 text-lg font-medium text-ink transition-transform hover:-translate-y-0.5 disabled:opacity-70"
+            className="mt-4 w-full rounded-full bg-ink-foreground py-3.5 text-lg font-medium text-ink transition-transform hover:-translate-y-0.5 disabled:opacity-70"
           >
             {processing ? "Setting up your workspace..." : "Unlock Premium"}
           </button>
