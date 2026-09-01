@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, CalendarDays, CheckCircle2, Clock3, FileQuestion, GraduationCap, Layers3, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, CheckCircle2, Clock3, FileQuestion, GraduationCap, Sparkles } from "lucide-react";
 
 import { DashboardSidebar } from "@/components/dashboard-sidebar";
 import { readProfile, type OnboardingProfile } from "@/lib/onboarding";

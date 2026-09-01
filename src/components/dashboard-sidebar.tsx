@@ -9,7 +9,6 @@ import {
   FileText,
   Folder,
   Gamepad2,
-  GraduationCap,
   Headphones,
   Home,
   LayoutGrid,
